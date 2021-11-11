@@ -5,3 +5,7 @@ app = Flask(__name__)
 @app.route("/")
 def hello_world():
 	return "<p>Oi!</p>"
+
+@app.route("/sobre")
+def sobre():
+	return "<p>Este site foi criado por gabriela.</p>"
