@@ -8,6 +8,7 @@ def hello_world():
 	<h1>Home</h1>
 	<a href="/">Home</a>
 	<a href="/sobre">Sobre</a>
+	<p>Olá, seja bem-vindo!</p>
 	"""
 
 @app.route("/sobre")
