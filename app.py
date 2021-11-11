@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route("/")
 def hello_world():
 	return """
-	<h1>Home</g1>
+	<h1>Home</h1>
 	<a href="/">Home</a>
 	<a href="/sobre">Sobre</a>
 	"""
