@@ -8,4 +8,4 @@ def hello_world():
 
 @app.route("/sobre")
 def sobre():
-	return "<p>Este site foi criado por gabriela.</p>"
+	return "<h1>Sobre</h1><p>Este site foi criado por gabriela.</p>"
