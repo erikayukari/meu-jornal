@@ -4,12 +4,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-	return """
-	<h1>Home</h1>
-	<a href="/">Home</a>
-	<a href="/sobre">Sobre</a>
-	<p>Olá, seja bem-vindo!</p>
-	"""
+	arquivo = open("templates/home.html")
+	return arquivo.read()
 
 @app.route("/sobre")
 def sobre():
