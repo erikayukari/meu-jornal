@@ -23,4 +23,5 @@ def sobre():
 	<a href="/sobre">Sobre</a>
 	<p>Este link foi coletado: </br> {link_globo}</p>
 	<p>Este site foi criado por gabriela.</p>
+	<p>teste</p>
 	"""
