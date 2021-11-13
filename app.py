@@ -1,5 +1,6 @@
-from flask import Flask
 import requests
+from flask import Flask
+from bs4 import BeautifulSoup
 
 def pega_link():
   url = "https://www.globo.com/"
