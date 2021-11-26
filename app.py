@@ -42,7 +42,7 @@ def telegram():
 	elif text in ["bom dia", "boa tarde", "boa noite"]:
 		answer = text
 	elif "globo.com" in text:
-		answer = f"segue o link: {link_globo}"
+		answer = f"segue o link da globo.com: {link_globo}"
 	else:
 		answer = "Nao entendi"
 	
