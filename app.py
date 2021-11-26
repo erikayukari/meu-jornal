@@ -25,3 +25,16 @@ def sobre():
 	<p>Este site foi criado por gabriela.</p>
 	<p>teste</p>
 	"""
+from flask import request
+import requests
+
+@app.route("/telegram", methods = ["POST"])
+def telegram():
+	token = "2134084726:AAEIypTzacglN21GzeTNy1qn3onQzShIt30"
+	dados = request.json()
+	mensagem = {"chat_id": dados["message"]["chat"]["id"], "text": "oiiiiiiiiiii!"}
+	endpoint = "sendMessage"
+	url = f"https://api.telegram.org/bot{token}/{endpoint}"
+	requests.post(url, data = mensagem)
+	return "ok"
+	
