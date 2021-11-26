@@ -1,3 +1,3 @@
 # capas-jornais
 
-https://gabrielacaesar-capas-jornais.herokuapp.com/sobre
+https://gabrielacaesar-capas-jornais.herokuapp.com/
