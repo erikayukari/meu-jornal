@@ -18,6 +18,7 @@ def hello_world():
 
 @app.route("/sobre")
 def sobre():
+	link_globo = pega_link()
 	return f"""
 	<h1>Sobre</h1>
 	<a href="/">Home</a>
