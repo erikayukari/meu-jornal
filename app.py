@@ -33,7 +33,7 @@ import requests
 @app.route("/telegram", methods = ["POST"])
 def telegram():
 	token = "2134084726:AAEIypTzacglN21GzeTNy1qn3onQzShIt30"
-	dados = request.json()
+	dados = request.json
 	mensagem = {"chat_id": dados["message"]["chat"]["id"], "text": "oiiiiiiiiiii!"}
 	endpoint = "sendMessage"
 	url = f"https://api.telegram.org/bot{token}/{endpoint}"
