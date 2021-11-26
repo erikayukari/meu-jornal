@@ -40,3 +40,7 @@ def telegram():
 	requests.post(url, data = mensagem)
 	return "ok"
 	
+url = f"https://api.telegram.org/bot{token}/setWebhook"
+site = "https://gabrielacaesar-capas-jornais.herokuapp.com/"
+resposta = requests.post(url, data={"url": site})
+print(resposta.json())
