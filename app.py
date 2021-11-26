@@ -1,5 +1,5 @@
 import requests
-import beautifulsoup4
+from bs4 import BeautifulSoup
 from flask import Flask
 
 def pega_link():
