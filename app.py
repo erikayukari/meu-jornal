@@ -32,6 +32,7 @@ import requests
 
 @app.route("/telegram", methods = ["POST"])
 def telegram():
+	link_globo = pega_link()
 	# processa mensagem
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
