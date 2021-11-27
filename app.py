@@ -166,9 +166,12 @@ def telegram():
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
 	text = update["message"]["text"].lower()
-	if text in ["oi", "ola", "olar", "olá"]:
+	if text in ["/start"]:
 		answer = """
-		Oi! Você pode escolher qual manchete ver aqui. Digite um nome do veículo por vez. 
+		Oi! Eu sou o robô da Gabriela e mostro as manchetes dos principais sites de notícias. 
+		Sempre que voce quiser saber uma manchete, você pode escrever aqui e eu te envio o link.
+		
+		ATENÇÃO: Digite um nome do veículo por vez. 
 		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, O Dia, Zero Hora e Correio Braziliense.
 		Opções da imprensa dos EUA: NYT.
 		"""
@@ -201,7 +204,11 @@ def telegram():
 	elif "nyt" in text:
 		answer = f"segue o link do NYT: {manchete_nyt}"
 	else:
-		answer = "Nao entendi"
+		answer = """
+		Por favor, digite um veículo **que aparece na lista**.
+		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, O Dia, Zero Hora e Correio Braziliense.
+		Opções da imprensa dos EUA: NYT.
+		"""
 	
 	# responde
 	token = os.environ["TELEGRAM_TOKEN"]
