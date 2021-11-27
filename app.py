@@ -21,6 +21,13 @@ def link_g1():
   manchete_g1 = soup.find('a', class_ = 'feed-post-link gui-color-primary gui-color-hover').attrs['href']
   return manchete_g1
 
+def link_uol():
+  url = "https://www.uol.com.br/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  manchete_uol = soup.find('article', class_ = 'headlineMain section__grid__main__highlight__item').find('a').attrs['href']
+  return manchete_uol
+
 def link_folha():
   url = "https://www.folha.uol.com.br/"
   page = requests.get(url)
@@ -55,6 +62,7 @@ def hello_world():
 def sobre():
 	manchete_globo_com = link_globo_com()
 	manchete_g1 = link_g1()
+	manchete_uol = link_uol()
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
@@ -64,6 +72,7 @@ def sobre():
 	<a href="/sobre">Sobre</a>
 	<p>Manchete da Globo.com: </br> {manchete_globo_com}</p>
 	<p>Manchete do g1: </br> {manchete_g1}</p>
+	<p>Manchete do UOL: </br> {manchete_uol}</p>
 	<p>Manchete da Folha: </br> {manchete_folha}</p>
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
@@ -76,6 +85,7 @@ def telegram():
 	# chama funcoes do scraper
 	manchete_globo_com = link_globo_com()
 	manchete_g1 = link_g1()
+	manchete_uol = link_uol()
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
@@ -84,7 +94,7 @@ def telegram():
 	chat_id = update["message"]["chat"]["id"]
 	text = update["message"]["text"].lower()
 	if text in ["oi", "ola", "olar", "olá"]:
-		answer = "Oi! Você pode escolher qual manchete ver aqui. Digite um nome do veículo por vez. Opções: globo.com, g1, folha, estadao, o globo"
+		answer = "Oi! Você pode escolher qual manchete ver aqui. Digite um nome do veículo por vez. Opções: globo.com, g1, UOL, Folha, Estadão e O Globo"
 	elif text in ["bom dia", "boa tarde", "boa noite"]:
 		answer = text
 	elif "globo.com" in text:
@@ -97,6 +107,8 @@ def telegram():
 		answer = f"segue o link do Estadão: {manchete_estadao}"
 	elif "o globo" in text: 
 		answer = f"segue o link d'O Globo: {manchete_oglobo}"
+	elif "uol" in text: 
+		answer = f"segue o link do UOL: {manchete_uol}"
 	else:
 		answer = "Nao entendi"
 	
