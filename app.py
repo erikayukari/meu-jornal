@@ -179,7 +179,7 @@ def telegram():
 		answer = f"segue o link da globo.com: {manchete_globo_com}"
 	elif text in ["g1", "g um"]:
 		answer = f"segue o link do g1: {manchete_g1}"
-	elif text in ["valor", "valor economico"]:
+	elif text in ["valor", "valor economico", "valor ecomomico"]:
 		answer = f"segue o link do Valor: {manchete_valor}"
 	elif text in ["uol", "uo", "uoll"]: 
 		answer = f"segue o link do UOL: {manchete_uol}"
