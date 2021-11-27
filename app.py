@@ -2,12 +2,21 @@ import requests
 from bs4 import BeautifulSoup
 from flask import Flask
 
-def pega_link():
+# scrapers
+def link_globo_com():
   url = "https://www.globo.com/"
   page = requests.get(url)
   soup = BeautifulSoup(page.content, "html.parser")
-  link_globo = soup.find('a', class_ = 'post__link').attrs['href']
-  return link_globo
+  manchete_globo_com = soup.find('a', class_ = 'post__link').attrs['href']
+  return manchete_globo_com
+
+def link_g1():
+  url = "https://g1.globo.com/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  #print(soup)
+  manchete_g1 = soup.find('a', class_ = 'feed-post-link gui-color-primary gui-color-hover').attrs['href']
+  return manchete_g1
 
 app = Flask(__name__)
 
@@ -18,12 +27,14 @@ def hello_world():
 
 @app.route("/sobre")
 def sobre():
-	link_globo = pega_link()
+	link_globo_com = link_globo_com()
+	link_g1 = link_g1()
 	return f"""
 	<h1>Sobre</h1>
 	<a href="/">Home</a>
 	<a href="/sobre">Sobre</a>
-	<p>Este link foi coletado: </br> {link_globo}</p>
+	<p>Manchete da Globo.com: </br> {link_globo_com}</p>
+	<p>Manchete do g1: </br> {link_g1}</p>
 	<p>Este site foi criado por gabriela.</p>
 	<p>teste</p>
 	"""
@@ -32,7 +43,9 @@ import requests
 
 @app.route("/telegram", methods = ["POST"])
 def telegram():
-	link_globo = pega_link()
+	# chama funcoes do scraper
+	link_globo_com = link_globo_com()
+	link_g1 = link_g1()
 	# processa mensagem
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
@@ -42,7 +55,9 @@ def telegram():
 	elif text in ["bom dia", "boa tarde", "boa noite"]:
 		answer = text
 	elif "globo.com" in text:
-		answer = f"segue o link da globo.com: {link_globo}"
+		answer = f"segue o link da globo.com: {link_globo_com}"
+	elif "g1" in text:
+		answer = f"segue o link do g1: {link_g1}"
 	else:
 		answer = "Nao entendi"
 	
