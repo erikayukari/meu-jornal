@@ -21,6 +21,13 @@ def link_g1():
   manchete_g1 = soup.find('a', class_ = 'feed-post-link gui-color-primary gui-color-hover').attrs['href']
   return manchete_g1
 
+def link_valor():
+  url = "https://valor.globo.com/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  manchete_valor = soup.find('div', class_ = 'theme-title-element').find('a').attrs['href']
+  return manchete_valor
+
 def link_uol():
   url = "https://www.uol.com.br/"
   page = requests.get(url)
@@ -69,6 +76,7 @@ def hello_world():
 def sobre():
 	manchete_globo_com = link_globo_com()
 	manchete_g1 = link_g1()
+	manchete_valor = link_valor()
 	manchete_uol = link_uol()
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
@@ -81,6 +89,7 @@ def sobre():
 	<h2>Imprensa - Brasil</h2>
 	<p>Manchete da Globo.com: </br> {manchete_globo_com}</p>
 	<p>Manchete do g1: </br> {manchete_g1}</p>
+	<p>Manchete do Valor: </br> {manchete_valor}</p>
 	<p>Manchete do UOL: </br> {manchete_uol}</p>
 	<p>Manchete da Folha: </br> {manchete_folha}</p>
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
@@ -97,6 +106,7 @@ def telegram():
 	# chama funcoes do scraper
 	manchete_globo_com = link_globo_com()
 	manchete_g1 = link_g1()
+	manchete_valor = link_valor()
 	manchete_uol = link_uol()
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
@@ -118,6 +128,8 @@ def telegram():
 		answer = f"segue o link da globo.com: {manchete_globo_com}"
 	elif "g1" in text:
 		answer = f"segue o link do g1: {manchete_g1}"
+	elif "valor" in text:
+		answer = f"segue o link do Valor: {manchete_valor}"
 	elif "folha" in text:
 		answer = f"segue o link da Folha: {manchete_folha}"
 	elif "estadao" in text:
