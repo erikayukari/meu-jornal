@@ -65,6 +65,13 @@ def link_zerohora():
   manchete_zerohora = "https://gauchazh.clicrbs.com.br" + permalink_zerohora
   return manchete_zerohora
 
+def link_correio():
+  url = "https://www.correiobraziliense.com.br/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  manchete_correio = soup.find('div', class_ = 'manch-01').find('article').find('a').attrs['href']
+  return manchete_correio
+
 def link_nyt():
   url = "https://www.nytimes.com/"
   page = requests.get(url)
@@ -90,6 +97,7 @@ def sobre():
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
 	manchete_zerohora = link_zerohora()
+	manchete_correio = link_correio()
 	manchete_nyt = link_nyt()
 	return f"""
 	<h1>Sobre</h1>
@@ -104,6 +112,7 @@ def sobre():
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
 	<p>Manchete do Zero Hora: </br> {manchete_zerohora}</p>
+	<p>Manchete do Correio Braziliense: </br> {manchete_correio}</p>
 	</br>
 	<h2>Imprensa - EUA</h2>
 	<p>Manchete do New York Times: </br> {manchete_nyt}</p>
@@ -122,6 +131,7 @@ def telegram():
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
 	manchete_zerohora = link_zerohora()
+	manchete_correio = link_correio()
 	manchete_nyt = link_nyt()
 	# processa mensagem
 	update = request.json
@@ -130,7 +140,7 @@ def telegram():
 	if text in ["oi", "ola", "olar", "olá"]:
 		answer = """
 		Oi! Você pode escolher qual manchete ver aqui. Digite um nome do veículo por vez. 
-		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo e Zero Hora.
+		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Zero Hora e Correio Braziliense.
 		Opções da imprensa dos EUA: NYT.
 		"""
 	elif text in ["bom dia", "boa tarde", "boa noite"]:
@@ -151,6 +161,8 @@ def telegram():
 		answer = f"segue o link d'O Globo: {manchete_oglobo}"
 	elif "zero hora" in text: 
 		answer = f"segue o link do UOL: {manchete_zerohora}"
+	elif "correio braziliense" in text:
+		answer = f"segue o link do UOL: {manchete_correio}"
 	elif "nyt" in text:
 		answer = f"segue o link do NYT: {manchete_nyt}"
 	else:
