@@ -18,6 +18,15 @@ def link_g1():
   manchete_g1 = soup.find('a', class_ = 'feed-post-link gui-color-primary gui-color-hover').attrs['href']
   return manchete_g1
 
+def link_folha():
+  url = "https://www.folha.uol.com.br/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  #print(soup)
+  manchete_folha = soup.find('a', class_ = 'c-main-headline__url').attrs['href']
+  return manchete_folha
+
+# coisas do site
 app = Flask(__name__)
 
 @app.route("/")
@@ -29,23 +38,27 @@ def hello_world():
 def sobre():
 	manchete_globo_com = link_globo_com()
 	manchete_g1 = link_g1()
+	manchete_folha = link_folha()
 	return f"""
 	<h1>Sobre</h1>
 	<a href="/">Home</a>
 	<a href="/sobre">Sobre</a>
 	<p>Manchete da Globo.com: </br> {manchete_globo_com}</p>
 	<p>Manchete do g1: </br> {manchete_g1}</p>
+	<p>Manchete da Folha: </br> {manchete_folha}</p>
 	<p>Este site foi criado por gabriela.</p>
 	<p>teste</p>
 	"""
 from flask import request
 import requests
 
+# robo do telegram
 @app.route("/telegram", methods = ["POST"])
 def telegram():
 	# chama funcoes do scraper
 	manchete_globo_com = link_globo_com()
 	manchete_g1 = link_g1()
+	manchete_folha = link_folha()
 	# processa mensagem
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
@@ -58,6 +71,8 @@ def telegram():
 		answer = f"segue o link da globo.com: {manchete_globo_com}"
 	elif "g1" in text:
 		answer = f"segue o link do g1: {manchete_g1}"
+	elif "folha" in text:
+		answer = f"segue o link da folha: {manchete_folha}"
 	else:
 		answer = "Nao entendi"
 	
