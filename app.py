@@ -162,6 +162,7 @@ def telegram():
 	manchete_correio = link_correio()
 	manchete_jc = link_jc()
 	manchete_nyt = link_nyt()
+	estadao = ["estadao", "estadão"]
 	# processa mensagem
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
@@ -175,8 +176,6 @@ def telegram():
 		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, O Dia, Zero Hora e Correio Braziliense.
 		Opções da imprensa dos EUA: NYT.
 		"""
-	elif text in ["bom dia", "boa tarde", "boa noite"]:
-		answer = text
 	elif "globo.com" in text:
 		answer = f"segue o link da globo.com: {manchete_globo_com}"
 	elif "g1" in text:
@@ -187,7 +186,7 @@ def telegram():
 		answer = f"segue o link do UOL: {manchete_uol}"
 	elif "folha" in text:
 		answer = f"segue o link da Folha: {manchete_folha}"
-	elif "estadao" in text:
+	elif @estadao in text:
 		answer = f"segue o link do Estadão: {manchete_estadao}"
 	elif "o globo" in text: 
 		answer = f"segue o link d'O Globo: {manchete_oglobo}"
