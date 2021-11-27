@@ -85,6 +85,13 @@ def link_jc():
   manchete_jc = soup.find('a', class_ = 'content').attrs['href']
   return manchete_jc
 
+def link_metropoles():
+  url = "https://www.metropoles.com/"
+  page = requests.get(url, headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.27 Safari/537.36"})
+  soup = BeautifulSoup(page.content, "html.parser")
+  manchete_metropoles = soup.find('h2', class_ = 'm-title').find('a').attrs['href']
+  return manchete_metropoles
+
 def link_nyt():
   url = "https://www.nytimes.com/"
   page = requests.get(url)
@@ -109,6 +116,7 @@ def sobre():
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
+	manchete_metropoles = link_metropoles()
 	manchete_odia = link_odia()
 	manchete_zerohora = link_zerohora()
 	manchete_correio = link_correio()
@@ -126,10 +134,11 @@ def sobre():
 	<p>Manchete da Folha: </br> {manchete_folha}</p>
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
+	<p>Manchete do Metrópoles: </br> {manchete_metropoles}</p>
 	<p>Manchete d'O Dia: </br> {manchete_odia}</p>
 	<p>Manchete do Zero Hora: </br> {manchete_zerohora}</p>
-	<p>Manchete do Jornal do Commercio: </br> {manchete_jc}</p>
 	<p>Manchete do Correio Braziliense: </br> {manchete_correio}</p>
+	<p>Manchete do Jornal do Commercio: </br> {manchete_jc}</p>
 	</br>
 	<h2>Imprensa - EUA</h2>
 	<p>Manchete do New York Times: </br> {manchete_nyt}</p>
@@ -147,6 +156,7 @@ def telegram():
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
+	manchete_metropoles = link_metropoles()
 	manchete_odia = link_odia()
 	manchete_zerohora = link_zerohora()
 	manchete_correio = link_correio()
@@ -159,7 +169,7 @@ def telegram():
 	if text in ["oi", "ola", "olar", "olá"]:
 		answer = """
 		Oi! Você pode escolher qual manchete ver aqui. Digite um nome do veículo por vez. 
-		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, O Dia, Zero Hora e Correio Braziliense.
+		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, O Dia, Zero Hora e Correio Braziliense.
 		Opções da imprensa dos EUA: NYT.
 		"""
 	elif text in ["bom dia", "boa tarde", "boa noite"]:
@@ -178,6 +188,8 @@ def telegram():
 		answer = f"segue o link do Estadão: {manchete_estadao}"
 	elif "o globo" in text: 
 		answer = f"segue o link d'O Globo: {manchete_oglobo}"
+	elif "metropoles" in text:
+		answer = f"segue o link do Metrópoles: {manchete_metropoles}"
 	elif "o dia" in text: 
 		answer = f"segue o link d'O Dia: {manchete_odia}"
 	elif "zero hora" in text: 
