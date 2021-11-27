@@ -1,6 +1,9 @@
 import requests
+import datetime
+import os
 from bs4 import BeautifulSoup
-from flask import Flask
+from flask import Flask, request
+
 
 # scrapers
 def link_globo_com():
@@ -67,8 +70,6 @@ def sobre():
 	<p>Este site foi criado por gabriela.</p>
 	<p>teste</p>
 	"""
-from flask import request
-import requests
 
 # robo do telegram
 @app.route("/telegram", methods = ["POST"])
@@ -101,7 +102,7 @@ def telegram():
 		answer = "Nao entendi"
 	
 	# responde
-	token = "2134084726:AAEIypTzacglN21GzeTNy1qn3onQzShIt30"
+	token = os.environ["TELEGRAM_TOKEN"]
 	mensagem = {"chat_id": update["message"]["chat"]["id"], "text": answer}
 	endpoint = "sendMessage"
 	url = f"https://api.telegram.org/bot{token}/{endpoint}"
