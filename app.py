@@ -211,7 +211,7 @@ def telegram():
 	
 	# responde
 	token = os.environ["TELEGRAM_TOKEN"]
-	mensagem = {"chat_id": update["message"]["chat"]["id"], "text": answer}
+	mensagem = {"chat_id": update["text"]["chat"]["id"], "text": answer}
 	endpoint = "sendMessage"
 	url = f"https://api.telegram.org/bot{token}/{endpoint}"
 	requests.post(url, data = mensagem)
