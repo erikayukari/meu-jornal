@@ -50,6 +50,13 @@ def link_oglobo():
   manchete_oglobo = soup.find('h1', class_ = 'headline__title').find('a').attrs['href']
   return manchete_oglobo
 
+def link_nyt():
+  url = "https://www.nytimes.com/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  manchete_nyt = soup.find('a', class_ = 'css-13shibb').attrs['href']
+  return manchete_nyt
+
 # coisas do site
 app = Flask(__name__)
 
@@ -66,16 +73,21 @@ def sobre():
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
+	manchete_nyt = link_nyt()
 	return f"""
 	<h1>Sobre</h1>
 	<a href="/">Home</a>
 	<a href="/sobre">Sobre</a>
+	<h2>Imprensa - Brasil<h2>
 	<p>Manchete da Globo.com: </br> {manchete_globo_com}</p>
 	<p>Manchete do g1: </br> {manchete_g1}</p>
 	<p>Manchete do UOL: </br> {manchete_uol}</p>
 	<p>Manchete da Folha: </br> {manchete_folha}</p>
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
+	</br>
+	<h2>Imprensa - EUA</h2>
+	<p>Manchete do New York Times: </br> {manchete_nyt}</p>
 	<p>Este site foi criado por Gabriela Caesar.</p>
 	"""
 
@@ -89,12 +101,17 @@ def telegram():
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
+	manchete_nyt = link_nyt()
 	# processa mensagem
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
 	text = update["message"]["text"].lower()
 	if text in ["oi", "ola", "olar", "olá"]:
-		answer = "Oi! Você pode escolher qual manchete ver aqui. Digite um nome do veículo por vez. Opções: globo.com, g1, UOL, Folha, Estadão e O Globo"
+		answer = """
+		Oi! Você pode escolher qual manchete ver aqui. Digite um nome do veículo por vez. 
+		Opções da imprensa do Brasil: globo.com, g1, UOL, Folha, Estadão e O Globo.
+		Opções da imprensa dos EUA: NYT.
+		"""
 	elif text in ["bom dia", "boa tarde", "boa noite"]:
 		answer = text
 	elif "globo.com" in text:
@@ -109,6 +126,8 @@ def telegram():
 		answer = f"segue o link d'O Globo: {manchete_oglobo}"
 	elif "uol" in text: 
 		answer = f"segue o link do UOL: {manchete_uol}"
+	elif "nyt" in text:
+		answer = f"segue o link do NYT: {manchete_nyt}"
 	else:
 		answer = "Nao entendi"
 	
