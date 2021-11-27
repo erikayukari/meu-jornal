@@ -27,14 +27,14 @@ def hello_world():
 
 @app.route("/sobre")
 def sobre():
-	link_globo_com = link_globo_com()
-	link_g1 = link_g1()
+	manchete_globo_com = link_globo_com()
+	manchete_g1 = link_g1()
 	return f"""
 	<h1>Sobre</h1>
 	<a href="/">Home</a>
 	<a href="/sobre">Sobre</a>
-	<p>Manchete da Globo.com: </br> {link_globo_com}</p>
-	<p>Manchete do g1: </br> {link_g1}</p>
+	<p>Manchete da Globo.com: </br> {manchete_globo_com}</p>
+	<p>Manchete do g1: </br> {manchete_g1}</p>
 	<p>Este site foi criado por gabriela.</p>
 	<p>teste</p>
 	"""
@@ -44,8 +44,8 @@ import requests
 @app.route("/telegram", methods = ["POST"])
 def telegram():
 	# chama funcoes do scraper
-	link_globo_com = link_globo_com()
-	link_g1 = link_g1()
+	manchete_globo_com = link_globo_com()
+	manchete_g1 = link_g1()
 	# processa mensagem
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
@@ -55,9 +55,9 @@ def telegram():
 	elif text in ["bom dia", "boa tarde", "boa noite"]:
 		answer = text
 	elif "globo.com" in text:
-		answer = f"segue o link da globo.com: {link_globo_com}"
+		answer = f"segue o link da globo.com: {manchete_globo_com}"
 	elif "g1" in text:
-		answer = f"segue o link do g1: {link_g1}"
+		answer = f"segue o link do g1: {manchete_g1}"
 	else:
 		answer = "Nao entendi"
 	
