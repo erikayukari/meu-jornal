@@ -166,6 +166,7 @@ def telegram():
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
 	text = update["message"]["text"].lower()
+	
 	if text in ["/start"]:
 		answer = """
 		Oi! Eu sou o robô da Gabriela e mostro as manchetes dos principais sites de notícias. 
