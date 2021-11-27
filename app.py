@@ -4,7 +4,6 @@ import os
 from bs4 import BeautifulSoup
 from flask import Flask, request
 
-
 # scrapers
 def link_globo_com():
   url = "https://www.globo.com/"
@@ -57,6 +56,13 @@ def link_oglobo():
   manchete_oglobo = soup.find('h1', class_ = 'headline__title').find('a').attrs['href']
   return manchete_oglobo
 
+def link_odia():
+  url = "https://odia.ig.com.br/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  manchete_odia = soup.find('article', class_ = 'teaser manchetao').find('a').attrs['href']
+  return manchete_odia
+
 def link_zerohora():
   url = "https://gauchazh.clicrbs.com.br/"
   page = requests.get(url)
@@ -103,6 +109,7 @@ def sobre():
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
+	manchete_odia = link_odia()
 	manchete_zerohora = link_zerohora()
 	manchete_correio = link_correio()
 	manchete_jc = link_jc()
@@ -119,6 +126,7 @@ def sobre():
 	<p>Manchete da Folha: </br> {manchete_folha}</p>
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
+	<p>Manchete d'O Dia: </br> {manchete_odia}</p>
 	<p>Manchete do Zero Hora: </br> {manchete_zerohora}</p>
 	<p>Manchete do Jornal do Commercio: </br> {manchete_jc}</p>
 	<p>Manchete do Correio Braziliense: </br> {manchete_correio}</p>
@@ -139,6 +147,7 @@ def telegram():
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
+	manchete_odia = link_odia()
 	manchete_zerohora = link_zerohora()
 	manchete_correio = link_correio()
 	manchete_jc = link_jc()
@@ -169,6 +178,8 @@ def telegram():
 		answer = f"segue o link do Estadão: {manchete_estadao}"
 	elif "o globo" in text: 
 		answer = f"segue o link d'O Globo: {manchete_oglobo}"
+	elif "o dia" in text: 
+		answer = f"segue o link d'O Dia: {manchete_odia}"
 	elif "zero hora" in text: 
 		answer = f"segue o link do UOL: {manchete_zerohora}"
 	elif "correio braziliense" in text:
