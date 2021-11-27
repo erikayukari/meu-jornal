@@ -78,13 +78,14 @@ def sobre():
 	<h1>Sobre</h1>
 	<a href="/">Home</a>
 	<a href="/sobre">Sobre</a>
-	<h2>Imprensa - Brasil<h2>
+	<h2>Imprensa - Brasil</h2>
 	<p>Manchete da Globo.com: </br> {manchete_globo_com}</p>
 	<p>Manchete do g1: </br> {manchete_g1}</p>
 	<p>Manchete do UOL: </br> {manchete_uol}</p>
 	<p>Manchete da Folha: </br> {manchete_folha}</p>
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
+	</br>
 	</br>
 	<h2>Imprensa - EUA</h2>
 	<p>Manchete do New York Times: </br> {manchete_nyt}</p>
