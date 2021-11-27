@@ -175,31 +175,31 @@ def telegram():
 		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, O Dia, Zero Hora e Correio Braziliense.
 		Opções da imprensa dos EUA: NYT.
 		"""
-	elif "globo.com" in text:
+	elif text in ["globo.com", "globo"]:
 		answer = f"segue o link da globo.com: {manchete_globo_com}"
-	elif "g1" in text:
+	elif text in ["g1", "g um"]:
 		answer = f"segue o link do g1: {manchete_g1}"
-	elif "valor" in text:
+	elif text in ["valor", "valor economico"]:
 		answer = f"segue o link do Valor: {manchete_valor}"
-	elif "uol" in text: 
+	elif text in ["uol", "uo", "uoll"]: 
 		answer = f"segue o link do UOL: {manchete_uol}"
-	elif "folha" in text:
+	elif text in ["folha", "folha de spaulo", "folha de s.paulo", "fsp"]:
 		answer = f"segue o link da Folha: {manchete_folha}"
 	elif text in ["estadao", "estadão"]:
 		answer = f"segue o link do Estadão: {manchete_estadao}"
-	elif "o globo" in text: 
+	elif text in ["o globo", "oglobo"]: 
 		answer = f"segue o link d'O Globo: {manchete_oglobo}"
-	elif "metropoles" in text:
+	elif text in ["metropoles", "metropolis"]:
 		answer = f"segue o link do Metrópoles: {manchete_metropoles}"
-	elif "o dia" in text: 
+	elif text in ["o dia", "odia"]: 
 		answer = f"segue o link d'O Dia: {manchete_odia}"
-	elif "zero hora" in text: 
+	elif text in ["zero hora", "zerohora", "0 hora"]: 
 		answer = f"segue o link do UOL: {manchete_zerohora}"
-	elif "correio braziliense" in text:
+	elif text in ["correio braziliense", "correio brasiliense"]:
 		answer = f"segue o link do UOL: {manchete_correio}"
-	elif "jornal do commercio" in text:
+	elif text in ["jornal do commercio", "jornal do commércio", "jc", "jornal do comercio", "jornal do comércio"]:
 		answer = f"segue o link do Jornal do Commercio: {manchete_jc}"
-	elif "nyt" in text:
+	elif text in ["nyt", "the new york times", "new york times"]:
 		answer = f"segue o link do NYT: {manchete_nyt}"
 	else:
 		answer = """
