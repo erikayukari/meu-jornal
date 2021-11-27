@@ -57,6 +57,14 @@ def link_oglobo():
   manchete_oglobo = soup.find('h1', class_ = 'headline__title').find('a').attrs['href']
   return manchete_oglobo
 
+def link_zerohora():
+  url = "https://gauchazh.clicrbs.com.br/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  permalink_zerohora = soup.find('div', class_ = 'featured-card__summary l-col-sm-16').find('a').attrs['href']
+  manchete_zerohora = "https://gauchazh.clicrbs.com.br" + permalink_zerohora
+  return manchete_zerohora
+
 def link_nyt():
   url = "https://www.nytimes.com/"
   page = requests.get(url)
@@ -81,6 +89,7 @@ def sobre():
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
+	manchete_zerohora = link_zerohora()
 	manchete_nyt = link_nyt()
 	return f"""
 	<h1>Sobre</h1>
@@ -94,6 +103,7 @@ def sobre():
 	<p>Manchete da Folha: </br> {manchete_folha}</p>
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
+	<p>Manchete do Zero Hora: </br> {manchete_zerohora}</p>
 	</br>
 	<h2>Imprensa - EUA</h2>
 	<p>Manchete do New York Times: </br> {manchete_nyt}</p>
@@ -111,6 +121,7 @@ def telegram():
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
+	manchete_zerohora = link_zerohora()
 	manchete_nyt = link_nyt()
 	# processa mensagem
 	update = request.json
@@ -119,7 +130,7 @@ def telegram():
 	if text in ["oi", "ola", "olar", "olá"]:
 		answer = """
 		Oi! Você pode escolher qual manchete ver aqui. Digite um nome do veículo por vez. 
-		Opções da imprensa do Brasil: globo.com, g1, UOL, Folha, Estadão e O Globo.
+		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo e Zero Hora.
 		Opções da imprensa dos EUA: NYT.
 		"""
 	elif text in ["bom dia", "boa tarde", "boa noite"]:
@@ -130,14 +141,16 @@ def telegram():
 		answer = f"segue o link do g1: {manchete_g1}"
 	elif "valor" in text:
 		answer = f"segue o link do Valor: {manchete_valor}"
+	elif "uol" in text: 
+		answer = f"segue o link do UOL: {manchete_uol}"
 	elif "folha" in text:
 		answer = f"segue o link da Folha: {manchete_folha}"
 	elif "estadao" in text:
 		answer = f"segue o link do Estadão: {manchete_estadao}"
 	elif "o globo" in text: 
 		answer = f"segue o link d'O Globo: {manchete_oglobo}"
-	elif "uol" in text: 
-		answer = f"segue o link do UOL: {manchete_uol}"
+	elif "zero hora" in text: 
+		answer = f"segue o link do UOL: {manchete_zerohora}"
 	elif "nyt" in text:
 		answer = f"segue o link do NYT: {manchete_nyt}"
 	else:
