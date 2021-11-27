@@ -26,6 +26,13 @@ def link_folha():
   manchete_folha = soup.find('a', class_ = 'c-main-headline__url').attrs['href']
   return manchete_folha
 
+def link_estadao():
+  url = "https://www.estadao.com.br/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  manchete_estadao = soup.find('div', class_ = 'intro').find('a').attrs['href']
+  return manchete_estadao
+
 # coisas do site
 app = Flask(__name__)
 
@@ -39,6 +46,7 @@ def sobre():
 	manchete_globo_com = link_globo_com()
 	manchete_g1 = link_g1()
 	manchete_folha = link_folha()
+	manchete_estadao = link_estadao()
 	return f"""
 	<h1>Sobre</h1>
 	<a href="/">Home</a>
@@ -46,6 +54,7 @@ def sobre():
 	<p>Manchete da Globo.com: </br> {manchete_globo_com}</p>
 	<p>Manchete do g1: </br> {manchete_g1}</p>
 	<p>Manchete da Folha: </br> {manchete_folha}</p>
+	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Este site foi criado por gabriela.</p>
 	<p>teste</p>
 	"""
@@ -59,6 +68,7 @@ def telegram():
 	manchete_globo_com = link_globo_com()
 	manchete_g1 = link_g1()
 	manchete_folha = link_folha()
+	manchete_estadao = link_estadao()
 	# processa mensagem
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
@@ -73,6 +83,8 @@ def telegram():
 		answer = f"segue o link do g1: {manchete_g1}"
 	elif "folha" in text:
 		answer = f"segue o link da folha: {manchete_folha}"
+	elif "estadao" in text:
+		answer = f"segue o link da folha: {manchete_estadao}"
 	else:
 		answer = "Nao entendi"
 	
