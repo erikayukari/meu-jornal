@@ -159,7 +159,7 @@ def telegram():
 	if text in ["oi", "ola", "olar", "olá"]:
 		answer = """
 		Oi! Você pode escolher qual manchete ver aqui. Digite um nome do veículo por vez. 
-		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Zero Hora e Correio Braziliense.
+		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, O Dia, Zero Hora e Correio Braziliense.
 		Opções da imprensa dos EUA: NYT.
 		"""
 	elif text in ["bom dia", "boa tarde", "boa noite"]:
