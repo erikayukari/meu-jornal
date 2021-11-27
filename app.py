@@ -86,7 +86,6 @@ def sobre():
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
 	</br>
-	</br>
 	<h2>Imprensa - EUA</h2>
 	<p>Manchete do New York Times: </br> {manchete_nyt}</p>
 	<p>Este site foi criado por Gabriela Caesar.</p>
