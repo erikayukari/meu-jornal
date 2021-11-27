@@ -164,7 +164,7 @@ def telegram():
 	manchete_nyt = link_nyt()
 	# processa mensagem
 	update = request.json
-	chat_id = update.message.chat.id
+	chat_id = update["message"]["chat"]["id"]
 	text = update["message"]["text"].lower()
 	if text in ["/start"]:
 		answer = """
