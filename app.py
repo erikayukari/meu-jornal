@@ -107,8 +107,8 @@ def hello_world():
 	arquivo = open("templates/home.html")
 	return arquivo.read()
 
-@app.route("/sobre")
-def sobre():
+@app.route("/manchetes")
+def manchetes():
 	manchete_globo_com = link_globo_com()
 	manchete_g1 = link_g1()
 	manchete_valor = link_valor()
@@ -123,9 +123,9 @@ def sobre():
 	manchete_jc = link_jc()
 	manchete_nyt = link_nyt()
 	return f"""
-	<h1>Sobre</h1>
+	<h1>Manchetes</h1>
 	<a href="/">Home</a>
-	<a href="/sobre">Sobre</a>
+	<a href="/manchetes">Manchetes</a>
 	<h2>Imprensa - Brasil</h2>
 	<p>Manchete da Globo.com: </br> {manchete_globo_com}</p>
 	<p>Manchete do g1: </br> {manchete_g1}</p>
