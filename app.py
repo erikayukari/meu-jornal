@@ -67,8 +67,7 @@ def sobre():
 	<p>Manchete da Folha: </br> {manchete_folha}</p>
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
-	<p>Este site foi criado por gabriela.</p>
-	<p>teste</p>
+	<p>Este site foi criado por Gabriela Caesar.</p>
 	"""
 
 # robo do telegram
