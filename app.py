@@ -72,6 +72,13 @@ def link_correio():
   manchete_correio = soup.find('div', class_ = 'manch-01').find('article').find('a').attrs['href']
   return manchete_correio
 
+def link_jc():
+  url = "https://jc.ne10.uol.com.br/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  manchete_jc = soup.find('a', class_ = 'content').attrs['href']
+  return manchete_jc
+
 def link_nyt():
   url = "https://www.nytimes.com/"
   page = requests.get(url)
@@ -98,6 +105,7 @@ def sobre():
 	manchete_oglobo = link_oglobo()
 	manchete_zerohora = link_zerohora()
 	manchete_correio = link_correio()
+	manchete_jc = link_jc()
 	manchete_nyt = link_nyt()
 	return f"""
 	<h1>Sobre</h1>
@@ -112,6 +120,7 @@ def sobre():
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
 	<p>Manchete do Zero Hora: </br> {manchete_zerohora}</p>
+	<p>Manchete do Jornal do Commercio: </br> {manchete_jc}</p>
 	<p>Manchete do Correio Braziliense: </br> {manchete_correio}</p>
 	</br>
 	<h2>Imprensa - EUA</h2>
@@ -132,6 +141,7 @@ def telegram():
 	manchete_oglobo = link_oglobo()
 	manchete_zerohora = link_zerohora()
 	manchete_correio = link_correio()
+	manchete_jc = link_jc()
 	manchete_nyt = link_nyt()
 	# processa mensagem
 	update = request.json
@@ -163,6 +173,8 @@ def telegram():
 		answer = f"segue o link do UOL: {manchete_zerohora}"
 	elif "correio braziliense" in text:
 		answer = f"segue o link do UOL: {manchete_correio}"
+	elif "jornal do commercio" in text:
+		answer = f"segue o link do Jornal do Commercio: {manchete_jc}"
 	elif "nyt" in text:
 		answer = f"segue o link do NYT: {manchete_nyt}"
 	else:
