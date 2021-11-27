@@ -162,7 +162,6 @@ def telegram():
 	manchete_correio = link_correio()
 	manchete_jc = link_jc()
 	manchete_nyt = link_nyt()
-	estadao = ["estadao", "estadão"]
 	# processa mensagem
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
@@ -186,7 +185,7 @@ def telegram():
 		answer = f"segue o link do UOL: {manchete_uol}"
 	elif "folha" in text:
 		answer = f"segue o link da Folha: {manchete_folha}"
-	elif @estadao in text:
+	elif text in ["estadao", "estadão"]:
 		answer = f"segue o link do Estadão: {manchete_estadao}"
 	elif "o globo" in text: 
 		answer = f"segue o link d'O Globo: {manchete_oglobo}"
