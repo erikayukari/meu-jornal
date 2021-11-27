@@ -33,6 +33,13 @@ def link_estadao():
   manchete_estadao = soup.find('div', class_ = 'intro').find('a').attrs['href']
   return manchete_estadao
 
+def link_oglobo():
+  url = "https://oglobo.globo.com/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  manchete_oglobo = soup.find('h1', class_ = 'headline__title').find('a').attrs['href']
+  return manchete_oglobo
+
 # coisas do site
 app = Flask(__name__)
 
@@ -47,6 +54,7 @@ def sobre():
 	manchete_g1 = link_g1()
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
+	manchete_oglobo = link_oglobo()
 	return f"""
 	<h1>Sobre</h1>
 	<a href="/">Home</a>
@@ -55,6 +63,7 @@ def sobre():
 	<p>Manchete do g1: </br> {manchete_g1}</p>
 	<p>Manchete da Folha: </br> {manchete_folha}</p>
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
+	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
 	<p>Este site foi criado por gabriela.</p>
 	<p>teste</p>
 	"""
@@ -69,12 +78,13 @@ def telegram():
 	manchete_g1 = link_g1()
 	manchete_folha = link_folha()
 	manchete_estadao = link_estadao()
+	manchete_oglobo = link_oglobo()
 	# processa mensagem
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
 	text = update["message"]["text"].lower()
 	if text in ["oi", "ola", "olar", "olá"]:
-		answer = "Oi! Como vai?"
+		answer = "Oi! Você pode escolher qual manchete ver aqui. Digite um nome do veículo por vez. Opções: globo.com, g1, folha, estadao, o globo"
 	elif text in ["bom dia", "boa tarde", "boa noite"]:
 		answer = text
 	elif "globo.com" in text:
@@ -82,9 +92,11 @@ def telegram():
 	elif "g1" in text:
 		answer = f"segue o link do g1: {manchete_g1}"
 	elif "folha" in text:
-		answer = f"segue o link da folha: {manchete_folha}"
+		answer = f"segue o link da Folha: {manchete_folha}"
 	elif "estadao" in text:
-		answer = f"segue o link da folha: {manchete_estadao}"
+		answer = f"segue o link do Estadão: {manchete_estadao}"
+	elif "o globo" in text: 
+		answer = f"segue o link d'O Globo: {manchete_oglobo}"
 	else:
 		answer = "Nao entendi"
 	
