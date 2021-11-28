@@ -221,7 +221,7 @@ def telegram():
 		segue o link do UOL: {manchete_zerohora}
 		segue o link do Correio Braziliense: {manchete_correio}
 		segue o link do Jornal do Commercio: {manchete_jc}
-		segue o link d'O Dia: {manchete_r7}
+		segue o link do R7: {manchete_r7}
 		segue o link d'O Povo: {machete_opovo}
 		segue o link do NYT: {manchete_nyt}
 		"""
@@ -251,8 +251,8 @@ def telegram():
 		answer = f"segue o link do Correio Braziliense: {manchete_correio}"
 	elif text in ["jornal do commercio", "jornal do commércio", "jc", "jornal do comercio", "jornal do comércio"]:
 		answer = f"segue o link do Jornal do Commercio: {manchete_jc}"
-	elif text in ["r7", "r77"]: 
-		answer = f"segue o link d'O Dia: {manchete_r7}"
+	elif text in ["r7", "r77", "r sete"]: 
+		answer = f"segue o link do R7: {manchete_r7}"
 	elif text in ["o povo", "opovo", "povo"]:
 		answer = f"segue o link d'O Povo: {manchete_opovo}"
 	elif text in ["nyt", "the new york times", "new york times"]:
