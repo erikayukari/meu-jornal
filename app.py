@@ -222,7 +222,7 @@ def telegram():
 		segue o link do Correio Braziliense: {manchete_correio}
 		segue o link do Jornal do Commercio: {manchete_jc}
 		segue o link do R7: {manchete_r7}
-		segue o link d'O Povo: {machete_opovo}
+		segue o link d'O Povo: {manchete_opovo}
 		segue o link do NYT: {manchete_nyt}
 		"""
 	elif text in ["globo.com", "globo"]:
