@@ -202,9 +202,9 @@ def telegram():
 		Oi! Eu sou o robô da Gabriela e mostro as manchetes dos principais sites de notícias. 
 		Sempre que voce quiser saber uma manchete, você pode escrever aqui e eu te envio o link.
 		
-		ATENÇÃO: Digite um nome do veículo por vez. 
-		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, Extra, O Dia, Zero Hora, Correio Braziliense, R7 e O Povo.
-		Opções da imprensa dos EUA: NYT.
+		ATENÇÃO: Digite "Todos" para receber todos os links. Ou digite apenas um nome do veículo por vez. 
+		
+		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, Extra, O Dia, Zero Hora, Correio Braziliense, R7 e O Povo. Opções da imprensa dos EUA: NYT.
 		"""
 	elif text in ["todos", "todo", "tudo", "todos os links", "todas as manchetes"]:
 		answer = f"""
@@ -258,11 +258,9 @@ def telegram():
 	elif text in ["nyt", "the new york times", "new york times"]:
 		answer = f"segue o link do NYT: {manchete_nyt}"
 	else:
-		answer = """
-		1) Por favor, escreva "todos" se desejar receber todos os links.
-		2) Ou escreva apenas o nome do veículo que te interessa:
-		2a) Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, Extra, O Dia, Zero Hora, Correio Braziliense, R7 e O Povo.
-		2b) Opções da imprensa dos EUA: NYT.
+		answer = """Por favor, escreva "todos" se desejar receber todos os links. Ou escreva apenas o nome do veículo que te interessa:
+		
+		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, Extra, O Dia, Zero Hora, Correio Braziliense, R7 e O Povo. Opções da imprensa dos EUA: NYT.
 		"""
 	
 	# responde
