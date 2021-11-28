@@ -56,6 +56,13 @@ def link_oglobo():
   manchete_oglobo = soup.find('h1', class_ = 'headline__title').find('a').attrs['href']
   return manchete_oglobo
 
+def link_extra():
+  url = "https://extra.globo.com/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  manchete_extra = soup.find('div', class_ = 'top_story m1 sports no_blog').find('a').attrs['href']
+  return manchete_extra
+
 def link_odia():
   url = "https://odia.ig.com.br/"
   page = requests.get(url)
@@ -92,6 +99,13 @@ def link_metropoles():
   manchete_metropoles = soup.find('h2', class_ = 'm-title').find('a').attrs['href']
   return manchete_metropoles
 
+def link_r7():
+  url = "https://www.r7.com/"
+  page = requests.get(url)
+  soup = BeautifulSoup(page.content, "html.parser")
+  manchete_r7 = soup.find('h3', class_ = 'r7-flex-title-h1').find('a').attrs['href']
+  return manchete_r7
+
 def link_nyt():
   url = "https://www.nytimes.com/"
   page = requests.get(url)
@@ -117,10 +131,12 @@ def manchetes():
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
 	manchete_metropoles = link_metropoles()
+	manchete_extra = link_extra()
 	manchete_odia = link_odia()
 	manchete_zerohora = link_zerohora()
 	manchete_correio = link_correio()
 	manchete_jc = link_jc()
+	manchete_r7 = link_r7()
 	manchete_nyt = link_nyt()
 	return f"""
 	<h1>Manchetes</h1>
@@ -135,10 +151,12 @@ def manchetes():
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
 	<p>Manchete do Metrópoles: </br> {manchete_metropoles}</p>
+	<p>Manchete do Extra: </br> {manchete_extra}</p>
 	<p>Manchete d'O Dia: </br> {manchete_odia}</p>
 	<p>Manchete do Zero Hora: </br> {manchete_zerohora}</p>
 	<p>Manchete do Correio Braziliense: </br> {manchete_correio}</p>
 	<p>Manchete do Jornal do Commercio: </br> {manchete_jc}</p>
+	<p>Manchete do R7: </br> {manchete_r7}</p>
 	</br>
 	<h2>Imprensa - EUA</h2>
 	<p>Manchete do New York Times: </br> {manchete_nyt}</p>
@@ -157,10 +175,12 @@ def telegram():
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
 	manchete_metropoles = link_metropoles()
+	manchete_extra = link_extra()
 	manchete_odia = link_odia()
 	manchete_zerohora = link_zerohora()
 	manchete_correio = link_correio()
 	manchete_jc = link_jc()
+	manchete_r7 = link_r7()
 	manchete_nyt = link_nyt()
 	# processa mensagem
 	update = request.json
@@ -173,8 +193,26 @@ def telegram():
 		Sempre que voce quiser saber uma manchete, você pode escrever aqui e eu te envio o link.
 		
 		ATENÇÃO: Digite um nome do veículo por vez. 
-		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, O Dia, Zero Hora e Correio Braziliense.
+		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, Extra, O Dia, Zero Hora, Correio Braziliense e R7.
 		Opções da imprensa dos EUA: NYT.
+		"""
+	elif text in ["todos", "todo", "tudo", "todos os links", "todas as manchetes"]:
+		answer = f"""
+		segue o link da globo.com: {manchete_globo_com}
+		segue o link do g1: {manchete_g1}
+		segue o link do Valor: {manchete_valor}
+		segue o link do UOL: {manchete_uol}
+		segue o link da Folha: {manchete_folha}
+		segue o link do Estadão: {manchete_estadao}
+		segue o link d'O Globo: {manchete_oglobo}
+		segue o link do Metrópoles: {manchete_metropoles}
+		segue o link do Extra: {manchete_extra}
+		segue o link d'O Dia: {manchete_odia}
+		segue o link do UOL: {manchete_zerohora}
+		segue o link do Correio Braziliense: {manchete_correio}
+		segue o link do Jornal do Commercio: {manchete_jc}
+		segue o link d'O Dia: {manchete_r7}
+		segue o link do NYT: {manchete_nyt}
 		"""
 	elif text in ["globo.com", "globo"]:
 		answer = f"segue o link da globo.com: {manchete_globo_com}"
@@ -192,21 +230,26 @@ def telegram():
 		answer = f"segue o link d'O Globo: {manchete_oglobo}"
 	elif text in ["metropoles", "metropolis"]:
 		answer = f"segue o link do Metrópoles: {manchete_metropoles}"
+	elif text in ["extra", "jornal extra", "o extra"]: 
+		answer = f"segue o link do Extra: {manchete_extra}"
 	elif text in ["o dia", "odia"]: 
 		answer = f"segue o link d'O Dia: {manchete_odia}"
 	elif text in ["zero hora", "zerohora", "0 hora"]: 
 		answer = f"segue o link do UOL: {manchete_zerohora}"
 	elif text in ["correio braziliense", "correio brasiliense"]:
-		answer = f"segue o link do UOL: {manchete_correio}"
+		answer = f"segue o link do Correio Braziliense: {manchete_correio}"
 	elif text in ["jornal do commercio", "jornal do commércio", "jc", "jornal do comercio", "jornal do comércio"]:
 		answer = f"segue o link do Jornal do Commercio: {manchete_jc}"
+	elif text in ["r7", "r77"]: 
+		answer = f"segue o link d'O Dia: {manchete_r7}"
 	elif text in ["nyt", "the new york times", "new york times"]:
 		answer = f"segue o link do NYT: {manchete_nyt}"
 	else:
 		answer = """
-		Por favor, digite um veículo **que aparece na lista**.
-		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, O Dia, Zero Hora e Correio Braziliense.
-		Opções da imprensa dos EUA: NYT.
+		1) Por favor, escreva "todos" se desejar receber todos os links.
+		2) Ou escreva apenas o nome do veículo que te interessa:
+		2a) Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, Extra, O Dia, Zero Hora, Correio Braziliense e R7.
+		2b) Opções da imprensa dos EUA: NYT.
 		"""
 	
 	# responde
