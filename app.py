@@ -110,7 +110,7 @@ def link_opovo():
   url = "https://www.opovo.com.br/"
   page = requests.get(url)
   soup = BeautifulSoup(page.content, "html.parser")
-  manchete_opovo = soup.find('div', class_ = 'caixa-noticia materia1').find('a').attrs['href']
+  manchete_opovo = soup.find('div', class_ = 'materia1').find('a').attrs['href']
   return manchete_opovo
 
 def link_nyt():
