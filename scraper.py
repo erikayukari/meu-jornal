@@ -13,7 +13,6 @@ def link_g1():
   url = "https://g1.globo.com/"
   page = requests.get(url)
   soup = BeautifulSoup(page.content, "html.parser")
-  #print(soup)
   manchete_g1 = soup.find('a', class_ = 'feed-post-link gui-color-primary gui-color-hover').attrs['href']
   return manchete_g1
 
