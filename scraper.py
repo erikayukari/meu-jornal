@@ -56,7 +56,7 @@ def link_extra():
   url = "https://extra.globo.com/"
   page = requests.get(url)
   soup = BeautifulSoup(page.content, "html.parser")
-  manchete_extra = soup.find('div', class_ = 'top_story m1 sports no_blog').find('a').attrs['href']
+  manchete_extra = soup.find('div', class_ = 'top_story').find('a').attrs['href']
   return manchete_extra
 
 def link_odia():
