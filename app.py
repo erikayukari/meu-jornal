@@ -1,7 +1,5 @@
-import requests
 import datetime
 import os
-from bs4 import BeautifulSoup
 from flask import Flask, request
 from scraper import link_globo_com, link_g1, link_valor, link_uol, link_folha, link_estadao, link_oglobo, link_extra, link_odia, link_zerohora, link_correio, link_jc, link_metropoles, link_r7, link_opovo, link_nyt
 
