@@ -151,10 +151,7 @@ def telegram():
 	message = {"chat_id": chat_id, "text": answer}
 	endpoint = "sendMessage"
 	url = f"https://api.telegram.org/bot{token}/{endpoint}"
-	response = requests.post(url, data = mensagem)
-    	# finaliza
-    	if response.json()["ok"] == False:
-            raise RuntimeError("Erro ao responder mensagem para API do Telegram")
-    
-    	# Finaliza
+	requests.post(url, data = mensagem)
+    	
+	# Finaliza
     	return "ok"
