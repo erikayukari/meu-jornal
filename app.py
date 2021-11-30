@@ -153,5 +153,3 @@ def telegram():
 	url = f"https://api.telegram.org/bot{token}/{endpoint}"
 	requests.post(url, data = mensagem)
     	
-	# Finaliza
-    	return "ok"
