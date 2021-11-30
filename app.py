@@ -145,4 +145,6 @@ def telegram():
 	endpoint = "sendMessage"
 	url = f"https://api.telegram.org/bot{token}/{endpoint}"
 	requests.post(url, data = message)
+	# finaliza
+	return "ok"
     	
