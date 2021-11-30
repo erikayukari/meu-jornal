@@ -108,10 +108,3 @@ def link_opovo():
   soup = BeautifulSoup(page.content, "html.parser")
   manchete_opovo = soup.find('div', class_ = 'materia1').find('a').attrs['href']
   return manchete_opovo
-
-def link_nyt():
-  url = "https://www.nytimes.com/"
-  page = requests.get(url)
-  soup = BeautifulSoup(page.content, "html.parser")
-  manchete_nyt = soup.find('a', class_ = 'css-13shibb').attrs['href']
-  return manchete_nyt
