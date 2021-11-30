@@ -154,7 +154,7 @@ def telegram():
 	response = requests.post(url, data = mensagem)
     	# finaliza
     	if response.json()["ok"] == False:
-        	raise RuntimeError("Erro ao responder mensagem para API do Telegram")
+            raise RuntimeError("Erro ao responder mensagem para API do Telegram")
     
     	# Finaliza
     	return "ok"
