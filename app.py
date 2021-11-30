@@ -144,5 +144,5 @@ def telegram():
 	message = {"chat_id": chat_id, "text": answer}
 	endpoint = "sendMessage"
 	url = f"https://api.telegram.org/bot{token}/{endpoint}"
-	requests.post(url, data = mensagem)
+	requests.post(url, data = message)
     	
