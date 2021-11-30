@@ -28,7 +28,6 @@ def manchetes():
 	manchete_jc = link_jc()
 	manchete_r7 = link_r7()
 	manchete_opovo = link_opovo()
-	manchete_nyt = link_nyt()
 	return f"""
 	<h1>Manchetes</h1>
 	<a href="/">Home</a>
@@ -50,8 +49,6 @@ def manchetes():
 	<p>Manchete d'O Povo: </br> {manchete_opovo}</p>
 	<p>Manchete do R7: </br> {manchete_r7}</p>
 	</br>
-	<h2>Imprensa - EUA</h2>
-	<p>Manchete do New York Times: </br> {manchete_nyt}</p>
 	<p>Este site foi criado por Gabriela Caesar.</p>
 	"""
 
@@ -74,7 +71,6 @@ def telegram():
 	manchete_jc = link_jc()
 	manchete_r7 = link_r7()
 	manchete_opovo = link_opovo()
-	manchete_nyt = link_nyt()
 	# processa mensagem
 	update = request.json
 	chat_id = update["message"]["chat"]["id"]
@@ -87,7 +83,7 @@ def telegram():
 		
 		ATENÇÃO: Digite "Todos" para receber todos os links. Ou digite apenas um nome do veículo por vez. 
 		
-		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, Extra, O Dia, Zero Hora, Correio Braziliense, R7 e O Povo. Opções da imprensa dos EUA: NYT.
+		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, Extra, O Dia, Zero Hora, Correio Braziliense, R7 e O Povo.
 		"""
 	elif text in ["todos", "todo", "tudo", "todos os links", "todas as manchetes"]:
 		answer = f"""
@@ -106,7 +102,6 @@ def telegram():
 		segue o link do Jornal do Commercio: {manchete_jc}
 		segue o link do R7: {manchete_r7}
 		segue o link d'O Povo: {manchete_opovo}
-		segue o link do NYT: {manchete_nyt}
 		"""
 	elif text in ["globo.com", "globo"]:
 		answer = f"segue o link da globo.com: {manchete_globo_com}"
@@ -138,12 +133,10 @@ def telegram():
 		answer = f"segue o link do R7: {manchete_r7}"
 	elif text in ["o povo", "opovo", "povo"]:
 		answer = f"segue o link d'O Povo: {manchete_opovo}"
-	elif text in ["nyt", "the new york times", "new york times"]:
-		answer = f"segue o link do NYT: {manchete_nyt}"
 	else:
 		answer = """Por favor, escreva "todos" se desejar receber todos os links. Ou escreva apenas o nome do veículo que te interessa:
 		
-		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, Extra, O Dia, Zero Hora, Correio Braziliense, R7 e O Povo. Opções da imprensa dos EUA: NYT.
+		Opções da imprensa do Brasil: globo.com, g1, Valor, UOL, Folha, Estadão, O Globo, Metrópoles, Extra, O Dia, Zero Hora, Correio Braziliense, R7 e O Povo.
 		"""
 	
 	# responde
