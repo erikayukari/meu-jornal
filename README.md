@@ -4,12 +4,21 @@ Este projeto apoia o jornalismo profissional. O acesso a informações muda vida
 
 ### sobre
 O **meu jornal** é um serviço gratuito para facilitar o acesso ao jornalismo profissional pelo aplicativo [Telegram](https://web.telegram.org/).
+Adicione o robô no seu Telegram: @meu-jornal
 
 ### autoria
 gabriela caesar (com orientações de [Alvaro Justen - Turicas](https://github.com/turicas) e Bernardo Vianna)
 
 ### última atualização
 18/12/2021
+
+### próximas versões
+- atualizar o scraper.py para usar ``lxml`` em vez de bs4
+- melhorar a interface do site (versão piloto é focada no robô do Telegram)
+- incluir nova funcionalidade: o usuário pode configurar para receber a mensagem quando o link for alterado
+- integrar os dados do site a um banco de dados e contabilizar o tempo no ar das manchetes
+- analisar os dados, gerar insights e cruzar com outras bases de dados
+- pensar em métricas para melhorar a audiência do veículo da imprensa
 
 ### como funciona
 Basta escolher o veículo da imprensa para receber o link da respectiva manchete.
