@@ -17,7 +17,7 @@ Manchete é a chamada principal de um jornal impresso ou de um portal de notíci
 
 Para utilizar o serviço, você deve:
 - garantir que tem o aplicativo de mensagem Telegram instalado no seu celular
-- mandar um 'oi' para o usuário @gabgabot (o robô do **meu jornal**)
+- mandar um 'oi' para o usuário @meu-jornal (o robô do **meu jornal**)
 - seguir as orientações do robô
 
 Ao conversar com o robô no Telegram:
