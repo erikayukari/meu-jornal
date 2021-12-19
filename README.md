@@ -16,7 +16,7 @@ gabriela caesar (com orientações de [Alvaro Justen - Turicas](https://github.c
 - atualizar o scraper.py para usar ``lxml`` em vez de ``beautifulsoup4``
 - criar uma newsletter do projeto, enviada diariamente, às 5h
 - melhorar a interface do site (versão piloto é focada no robô do Telegram)
-- incluir nova funcionalidade: o usuário pode configurar para receber a mensagem quando o link for alterado
+- criar funcionalidade para o usuário receber o link quando a manchete do veículo for alterada
 - integrar os dados do site a um banco de dados e contabilizar o tempo no ar das manchetes
 - analisar os dados, gerar insights e cruzar com outras bases de dados
 - pensar em métricas para melhorar a audiência do veículo da imprensa
