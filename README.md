@@ -3,7 +3,7 @@ Bem-vindo/a!
 Este projeto apoia o jornalismo profissional. O acesso a informações muda vidas. Ajude a imprensa. Assine jornais, sites e revistas. Apoie grandes e pequenos veículos. Busque informações antes de opinar. Cheque informações antes de compartilhar.
 
 ### sobre
-O **meu jornal** é um serviço gratuito para facilitar o acesso à informação pelo aplicativo [Telegram](https://web.telegram.org/).
+O **meu jornal** é um serviço gratuito para facilitar o acesso ao jornalismo profissional pelo aplicativo [Telegram](https://web.telegram.org/).
 
 ### autoria
 gabriela caesar (com orientações de [Alvaro Justen - Turicas](https://github.com/turicas) e Bernardo Vianna)
