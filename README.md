@@ -5,7 +5,7 @@ ATENÇÃO: este projeto apoia o jornalismo profissional. O acesso a informaçõe
 O **meu jornal** é um serviço gratuito para facilitar o acesso à informação pelo aplicativo [Telegram](https://web.telegram.org/).
 
 ### autoria
-gabriela caesar (com orientações de [Alvaro Justen - Turicas](https://github.com/turicas))
+gabriela caesar (com orientações de [Alvaro Justen - Turicas](https://github.com/turicas) e Bernardo Vianna)
 
 ### última atualização
 18/12/2021
