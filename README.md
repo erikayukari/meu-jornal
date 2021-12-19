@@ -1,7 +1,16 @@
+### mensagem inicial
 ATENÇÃO: este projeto apoia o jornalismo profissional. O acesso a informações muda vidas.
 
+### o projeto
 O **meu jornal** é um serviço gratuito para facilitar o acesso à informação pelo Telegram.
 
+### autoria
+gabriela caesar (com orientações de [Alvaro Justen - Turicas](https://github.com/turicas))
+
+### última atualização
+18/12/2021
+
+### como funciona
 Basta escolher o veículo da imprensa para receber o link da respectiva manchete.
 Manchete é a chamada principal de um jornal impresso ou de um portal de notícias.
 
