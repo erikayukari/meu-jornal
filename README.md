@@ -2,7 +2,7 @@
 ATENÇÃO: este projeto apoia o jornalismo profissional. O acesso a informações muda vidas. Ajude a imprensa. Assine jornais, sites e revistas. Apoie grandes e pequenos veículos. Busque informações antes de opinar. Cheque informações antes de compartilhar.
 
 ### o projeto
-O **meu jornal** é um serviço gratuito para facilitar o acesso à informação pelo Telegram.
+O **meu jornal** é um serviço gratuito para facilitar o acesso à informação pelo aplicativo [Telegram](https://web.telegram.org/).
 
 ### autoria
 gabriela caesar (com orientações de [Alvaro Justen - Turicas](https://github.com/turicas))
