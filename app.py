@@ -21,7 +21,6 @@ def manchetes():
 	manchete_estadao = link_estadao()
 	manchete_oglobo = link_oglobo()
 	manchete_metropoles = link_metropoles()
-	manchete_extra = link_extra()
 	return f"""
 	<h1>Manchetes</h1>
 	<a href="/">Home</a>
@@ -35,7 +34,6 @@ def manchetes():
 	<p>Manchete do Estadão: </br> {manchete_estadao}</p>
 	<p>Manchete d'O Globo: </br> {manchete_oglobo}</p>
 	<p>Manchete do Metrópoles: </br> {manchete_metropoles}</p>
-	<p>{manchete_extra}</p>
 	</br>
 	<p>Este site foi criado por Gabriela Caesar.</p>
 	"""
@@ -67,7 +65,6 @@ def telegram():
 		manchete_estadao = link_estadao()
 		manchete_oglobo = link_oglobo()
 		manchete_metropoles = link_metropoles()
-		manchete_extra = link_extra()
 		# printa mensagem com link
 		answer = f"""
 		segue o link da globo.com: {manchete_globo_com}
@@ -78,12 +75,10 @@ def telegram():
 		segue o link do Estadão: {manchete_estadao}
 		segue o link d'O Globo: {manchete_oglobo}
 		segue o link do Metrópoles: {manchete_metropoles}
-		<p>{manchete_extra}</p>
 		"""
 	elif text in ["globo.com", "globo"]:
 		manchete_globo_com = link_globo_com()
-		manchete_extra = link_extra()
-		answer = f"segue o link da globo.com: {manchete_globo_com} {manchete_extra}"
+		answer = f"segue o link da globo.com: {manchete_globo_com}"
 	elif text in ["g1", "g um"]:
 		manchete_g1 = link_g1()
 		answer = f"segue o link do g1: {manchete_g1}"
