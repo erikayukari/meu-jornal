@@ -13,7 +13,8 @@ gabriela caesar (com orientações de [Alvaro Justen - Turicas](https://github.c
 18/12/2021
 
 ### próximas versões
-- atualizar o scraper.py para usar ``lxml`` em vez de bs4
+- atualizar o scraper.py para usar ``lxml`` em vez de ``beautifulsoup4``
+- criar uma newsletter do projeto, enviada diariamente, às 5h
 - melhorar a interface do site (versão piloto é focada no robô do Telegram)
 - incluir nova funcionalidade: o usuário pode configurar para receber a mensagem quando o link for alterado
 - integrar os dados do site a um banco de dados e contabilizar o tempo no ar das manchetes
