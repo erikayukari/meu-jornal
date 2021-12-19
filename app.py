@@ -1,4 +1,3 @@
-import datetime
 import os
 from flask import Flask, request
 from scraper import *
