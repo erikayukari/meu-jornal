@@ -1,5 +1,4 @@
 import requests
-import lxml.html
 from bs4 import BeautifulSoup
 
 # scrapers
@@ -59,10 +58,3 @@ def link_metropoles():
   soup = BeautifulSoup(page.content, "html.parser")
   manchete_metropoles = soup.find('h2', class_ = 'm-title').find('a').attrs['href']
   return manchete_metropoles
-
-def link_extra():
-  url = "https://extra.globo.com/"
-  html = requests.get(url)
-  doc = lxml.html.fromstring(html.content)
-  manchete_extra = doc.xpath('//*[@id="main"]/div[1]/section/div[1]/div/div/div/h1/a')
-  return manchete_extra
