@@ -67,6 +67,7 @@ def telegram():
 		manchete_estadao = link_estadao()
 		manchete_oglobo = link_oglobo()
 		manchete_metropoles = link_metropoles()
+		manchete_extra = link_extra()
 		# printa mensagem com link
 		answer = f"""
 		segue o link da globo.com: {manchete_globo_com}
@@ -81,6 +82,7 @@ def telegram():
 		"""
 	elif text in ["globo.com", "globo"]:
 		manchete_globo_com = link_globo_com()
+		manchete_extra = link_extra()
 		answer = f"segue o link da globo.com: {manchete_globo_com} {manchete_extra}"
 	elif text in ["g1", "g um"]:
 		manchete_g1 = link_g1()
