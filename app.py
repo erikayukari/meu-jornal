@@ -77,21 +77,28 @@ def telegram():
 		segue o link do Metrópoles: {manchete_metropoles}
 		"""
 	elif text in ["globo.com", "globo"]:
+		manchete_globo_com = link_globo_com()
 		answer = f"segue o link da globo.com: {manchete_globo_com}"
 	elif text in ["g1", "g um"]:
+		manchete_g1 = link_g1()
 		answer = f"segue o link do g1: {manchete_g1}"
 	elif text in ["valor", "valor economico", "valor ecomomico"]:
 		manchete_valor = link_valor()
 		answer = f"segue o link do Valor: {manchete_valor}"
 	elif text in ["uol", "uo", "uoll"]: 
+		manchete_uol = link_uol()
 		answer = f"segue o link do UOL: {manchete_uol}"
 	elif text in ["folha", "folha de spaulo", "folha de s.paulo", "fsp"]:
+		manchete_folha = link_folha()
 		answer = f"segue o link da Folha: {manchete_folha}"
 	elif text in ["estadao", "estadão"]:
+		manchete_estadao = link_estadao()
 		answer = f"segue o link do Estadão: {manchete_estadao}"
 	elif text in ["o globo", "oglobo"]: 
+		manchete_oglobo = link_oglobo()
 		answer = f"segue o link d'O Globo: {manchete_oglobo}"
 	elif text in ["metropoles", "metropolis"]:
+		manchete_metropoles = link_metropoles()
 		answer = f"segue o link do Metrópoles: {manchete_metropoles}"
 	else:
 		answer = """Por favor, escreva "todos" se desejar receber todos os links. Ou escreva apenas o nome do veículo que te interessa:
