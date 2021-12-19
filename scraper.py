@@ -52,59 +52,9 @@ def link_oglobo():
   manchete_oglobo = soup.find('h1', class_ = 'headline__title').find('a').attrs['href']
   return manchete_oglobo
 
-def link_extra():
-  url = "https://extra.globo.com/"
-  page = requests.get(url)
-  soup = BeautifulSoup(page.content, "html.parser")
-  manchete_extra = soup.find('div', class_ = 'top_story').find('a').attrs['href']
-  return manchete_extra
-
-def link_odia():
-  url = "https://odia.ig.com.br/"
-  page = requests.get(url)
-  soup = BeautifulSoup(page.content, "html.parser")
-  manchete_odia = soup.find('article', class_ = 'teaser manchetao').find('a').attrs['href']
-  return manchete_odia
-
-def link_zerohora():
-  url = "https://gauchazh.clicrbs.com.br/"
-  page = requests.get(url)
-  soup = BeautifulSoup(page.content, "html.parser")
-  permalink_zerohora = soup.find('div', class_ = 'featured-card__summary l-col-sm-16').find('a').attrs['href']
-  manchete_zerohora = "https://gauchazh.clicrbs.com.br" + permalink_zerohora
-  return manchete_zerohora
-
-def link_correio():
-  url = "https://www.correiobraziliense.com.br/"
-  page = requests.get(url)
-  soup = BeautifulSoup(page.content, "html.parser")
-  manchete_correio = soup.find('div', class_ = 'manch-01').find('article').find('a').attrs['href']
-  return manchete_correio
-
-def link_jc():
-  url = "https://jc.ne10.uol.com.br/"
-  page = requests.get(url)
-  soup = BeautifulSoup(page.content, "html.parser")
-  manchete_jc = soup.find('a', class_ = 'content').attrs['href']
-  return manchete_jc
-
 def link_metropoles():
   url = "https://www.metropoles.com/"
   page = requests.get(url, headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.27 Safari/537.36"})
   soup = BeautifulSoup(page.content, "html.parser")
   manchete_metropoles = soup.find('h2', class_ = 'm-title').find('a').attrs['href']
   return manchete_metropoles
-
-def link_r7():
-  url = "https://www.r7.com/"
-  page = requests.get(url)
-  soup = BeautifulSoup(page.content, "html.parser")
-  manchete_r7 = soup.find('h3', class_ = 'r7-flex-title-h1').find('a').attrs['href']
-  return manchete_r7
-
-def link_opovo():
-  url = "https://www.opovo.com.br/"
-  page = requests.get(url)
-  soup = BeautifulSoup(page.content, "html.parser")
-  manchete_opovo = soup.find('div', class_ = 'materia1').find('a').attrs['href']
-  return manchete_opovo
